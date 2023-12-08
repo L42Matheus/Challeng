@@ -34,7 +34,7 @@ public class CustomerSuccessBalancingTest {
     }
 
     @Test
-    public void scenario2() {
+    public void givenLimitedCSAndCustomers_NoSuitableMatch() {
         List<CustomerSuccess> css = mapCustomerSuccess(11, 21, 31, 3, 4, 5);
         List<Customer> customers = mapCustomers(10, 10, 10, 20, 20, 30, 30, 30, 20, 60);
         List<Integer> csAway = Collections.emptyList();
