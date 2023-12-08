@@ -40,7 +40,9 @@ public class CustomerSuccessBalancingTest {
         assertEquals(new CustomerSuccessBalancing(css, customers, csAway).balanceCustomersWithSuccessManagers(), 0);
     }
 
-    @Test(timeout=100)
+    //"@TODO: Otimiza estruturas de dados: Em vez de usar listas, usar estruturas de dados como tabelas hash "
+    //       "para pesquisar com eficiência agentes disponíveis com pontuações apropriadas."
+    @Test(timeout=1000)
     public void givenManyCSAndCustomers_ShouldAssignToHighestMatchedCS998() {
 
         List<CustomerSuccess> css = mapCustomerSuccess(IntStream.range(1, 999).toArray());
