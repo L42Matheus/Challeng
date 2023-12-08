@@ -32,13 +32,13 @@ public class CustomerSuccessBalancing {
 
         int csIndex = 0;
 
-        for (Customer customer: customerList){
-            if (availablesCustomerSuccess.get(csIndex).getScore() >= customer.getScore()) {
-                break;
+        for (Customer customer : customerList) {
+            for (CustomerSuccess cs : availablesCustomerSuccess) {
+                if (cs.getScore() >= customer.getScore()) {
+                    csToCUstinerCount.put(cs.getId(), csToCUstinerCount.getOrDefault(cs.getId(), 0) + 1);
+                    break;
+                }
             }
-
-            csToCUstinerCount.put(availablesCustomerSuccess.get(csIndex).getId(),
-                    csToCUstinerCount.getOrDefault(availablesCustomerSuccess.get(csIndex).getId(), 0) + 1);
         }
 
         int maxCustomers = 0;
