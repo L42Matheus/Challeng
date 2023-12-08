@@ -1,4 +1,7 @@
-package com.rdstation;
+package com.rdstation.service;
+
+import com.rdstation.model.Customer;
+import com.rdstation.model.CustomerSuccess;
 
 import java.util.*;
 import java.util.stream.Collectors;

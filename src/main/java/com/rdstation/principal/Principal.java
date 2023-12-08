@@ -1,8 +1,8 @@
 package com.rdstation.principal;
 
-import com.rdstation.Customer;
-import com.rdstation.CustomerSuccess;
-import com.rdstation.CustomerSuccessBalancing;
+import com.rdstation.model.Customer;
+import com.rdstation.model.CustomerSuccess;
+import com.rdstation.service.CustomerSuccessBalancing;
 
 import java.util.Arrays;
 import java.util.List;
