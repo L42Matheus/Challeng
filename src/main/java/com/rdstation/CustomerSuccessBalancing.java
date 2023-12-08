@@ -27,8 +27,6 @@ public class CustomerSuccessBalancing {
 
         Map<Integer, Integer> csToCUstinerCount = new HashMap<>();
 
-        int csIndex = 0;
-
         for (Customer customer : customerList) {
             for (CustomerSuccess cs : availablesCustomerSuccess) {
                 if (cs.getScore() >= customer.getScore()) {
