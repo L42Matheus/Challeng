@@ -2,7 +2,7 @@
 
 ## Como rodar os testes
 ### Pré-requisitos
-- [Java 17](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html)
+- [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 
 ### Terminal
 
