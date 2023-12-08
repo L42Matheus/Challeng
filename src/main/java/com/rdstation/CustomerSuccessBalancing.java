@@ -18,11 +18,27 @@ public class CustomerSuccessBalancing {
     }
 
 
-    public int run() {
+    public int balanceCustomersWithSuccessManagers() {
         List<CustomerSuccess> availablesCustomerSuccess = getAvailableCustomerSuccess();
 
+        if (availablesCustomerSuccess.isEmpty() || customerList.isEmpty()) {
+            return 0;
+        }
 
-        return 0;
+        Map<Integer, Integer> csToCUstinerCount = new HashMap<>();
+
+        int csIndex = 0;
+
+        for (Customer customer: customerList){
+            if (availablesCustomerSuccess.get(csIndex).getScore() >= customer.getScore()) {
+                break;
+            }
+
+            csToCUstinerCount.put(availablesCustomerSuccess.get(csIndex).getId(),
+                    csToCUstinerCount.getOrDefault(availablesCustomerSuccess.get(csIndex).getId(), 0) + 1);
+        }
+
+        return csToCUstinerCount.size();
     }
 
     private List<CustomerSuccess> getAvailableCustomerSuccess() {
