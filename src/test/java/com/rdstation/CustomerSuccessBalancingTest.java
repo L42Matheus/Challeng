@@ -12,8 +12,6 @@ import java.util.stream.IntStream;
 import static org.junit.Assert.assertEquals;
 
 public class CustomerSuccessBalancingTest {
-
-
     @Test
     public void givenMultipleCSAndCustomers_OneBestMatch_CS1() {
         List<CustomerSuccess> css = toList(new CustomerSuccess(1, 60),
@@ -43,7 +41,7 @@ public class CustomerSuccessBalancingTest {
     }
 
     @Test(timeout=100)
-    public void scenario3() {
+    public void givenManyCSAndCustomers_ShouldAssignToHighestMatchedCS998() {
 
         List<CustomerSuccess> css = mapCustomerSuccess(IntStream.range(1, 999).toArray());
         List<Customer> customers =  buildSizeEntities(100000, 998);
@@ -53,7 +51,7 @@ public class CustomerSuccessBalancingTest {
     }
 
     @Test
-    public void scenario4() {
+    public void givenCSAndCustomers_NoCSMatchesCustomers() {
         List<CustomerSuccess> css = mapCustomerSuccess(1, 2, 3, 4, 5, 6);
         List<Customer> customers = mapCustomers(10, 10, 10, 20, 20, 30, 30, 30, 20, 60);
         List<Integer> csAway = Collections.emptyList();
@@ -62,7 +60,7 @@ public class CustomerSuccessBalancingTest {
     }
 
     @Test
-    public void scenario5() {
+    public void givenCSAndCustomers_SingleBestMatch_CS1() {
         List<CustomerSuccess> css = mapCustomerSuccess(100, 2, 3, 6, 4, 5);
         List<Customer> customers = mapCustomers(10, 10, 10, 20, 20, 30, 30, 30, 20, 60);
         List<Integer> csAway = Collections.emptyList();
@@ -71,7 +69,7 @@ public class CustomerSuccessBalancingTest {
     }
 
     @Test
-    public void scenario6() {
+    public void givenUnavailableCS_ShouldNotAssignAnyCustomers() {
         List<CustomerSuccess> css = mapCustomerSuccess(100, 99, 88, 3, 4, 5);
         List<Customer> customers = mapCustomers(10, 10, 10, 20, 20, 30, 30, 30, 20, 60);
         List<Integer> csAway = toList(1, 3, 2);
@@ -80,7 +78,8 @@ public class CustomerSuccessBalancingTest {
     }
 
     @Test
-    public void scenario7() {
+    public void givenCSOnLeave_ShouldAssignCustomersToNextBestMatch_CS3() {
+        //Should assign customers to the next available best matched Customer Success (CS3)
         List<CustomerSuccess> css = mapCustomerSuccess(100, 99, 88, 3, 4, 5);
         List<Customer> customers = mapCustomers(10, 10, 10, 20, 20, 30, 30, 30, 20, 60);
         List<Integer> csAway = toList(4,5,6);
@@ -89,7 +88,7 @@ public class CustomerSuccessBalancingTest {
     }
 
     @Test
-    public void scenario8() {
+    public void givenPartialCSUnavailable_ShouldAssignCustomersToNextBestMatch_CS1() {
         List<CustomerSuccess> css = mapCustomerSuccess(60, 40, 95, 75);
         List<Customer> customers = mapCustomers(90, 70, 20, 40, 60, 10);
         List<Integer> csAway = toList(2,4);
