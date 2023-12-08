@@ -15,7 +15,7 @@ public class CustomerSuccessBalancingTest {
 
 
     @Test
-    public void scenario1() {
+    public void givenMultipleCSAndCustomers_OneBestMatch_CS1() {
         List<CustomerSuccess> css = toList(new CustomerSuccess(1, 60),
                                            new CustomerSuccess(2, 20),
                                            new CustomerSuccess(3, 95),
@@ -30,7 +30,7 @@ public class CustomerSuccessBalancingTest {
 
         List<Integer> csAway = toList(2, 4);
 
-        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).run(), 1);
+        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).balanceCustomersWithSuccessManagers(), 1);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class CustomerSuccessBalancingTest {
         List<Customer> customers = mapCustomers(10, 10, 10, 20, 20, 30, 30, 30, 20, 60);
         List<Integer> csAway = Collections.emptyList();
 
-        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).run(), 0);
+        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).balanceCustomersWithSuccessManagers(), 0);
     }
 
     @Test(timeout=100)
@@ -49,7 +49,7 @@ public class CustomerSuccessBalancingTest {
         List<Customer> customers =  buildSizeEntities(100000, 998);
         List<Integer> csAway = toList(999);
 
-        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).run(), 998);
+        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).balanceCustomersWithSuccessManagers(), 998);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class CustomerSuccessBalancingTest {
         List<Customer> customers = mapCustomers(10, 10, 10, 20, 20, 30, 30, 30, 20, 60);
         List<Integer> csAway = Collections.emptyList();
 
-        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).run(), 0);
+        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).balanceCustomersWithSuccessManagers(), 0);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class CustomerSuccessBalancingTest {
         List<Customer> customers = mapCustomers(10, 10, 10, 20, 20, 30, 30, 30, 20, 60);
         List<Integer> csAway = Collections.emptyList();
 
-        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).run(), 1);
+        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).balanceCustomersWithSuccessManagers(), 1);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class CustomerSuccessBalancingTest {
         List<Customer> customers = mapCustomers(10, 10, 10, 20, 20, 30, 30, 30, 20, 60);
         List<Integer> csAway = toList(1, 3, 2);
 
-        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).run(), 0);
+        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).balanceCustomersWithSuccessManagers(), 0);
     }
 
     @Test
@@ -85,7 +85,7 @@ public class CustomerSuccessBalancingTest {
         List<Customer> customers = mapCustomers(10, 10, 10, 20, 20, 30, 30, 30, 20, 60);
         List<Integer> csAway = toList(4,5,6);
 
-        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).run(), 3);
+        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).balanceCustomersWithSuccessManagers(), 3);
     }
 
     @Test
@@ -94,7 +94,7 @@ public class CustomerSuccessBalancingTest {
         List<Customer> customers = mapCustomers(90, 70, 20, 40, 60, 10);
         List<Integer> csAway = toList(2,4);
 
-        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).run(), 1);
+        assertEquals(new CustomerSuccessBalancing(css, customers, csAway).balanceCustomersWithSuccessManagers(), 1);
     }
 
     private List<CustomerSuccess> mapCustomerSuccess(int... scores) {
