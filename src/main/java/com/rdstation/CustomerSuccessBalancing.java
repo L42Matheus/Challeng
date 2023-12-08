@@ -1,6 +1,7 @@
 package com.rdstation;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CustomerSuccessBalancing {
 
@@ -25,6 +26,8 @@ public class CustomerSuccessBalancing {
     }
 
     private List<CustomerSuccess> getAvailableCustomerSuccess() {
-        return customerSuccessList;
+        return customerSuccessList.stream()
+                .filter(cs -> !customerSuccessAway.contains(cs.getId()))
+                .collect(Collectors.toList());
     }
 }
