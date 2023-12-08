@@ -25,6 +25,9 @@ public class CustomerSuccessBalancing {
             return 0;
         }
 
+        availablesCustomerSuccess.sort(Comparator.comparingInt(CustomerSuccess::getScore));
+        customerList.sort(Comparator.comparingInt(Customer::getScore));
+
         Map<Integer, Integer> csToCUstinerCount = new HashMap<>();
 
         int csIndex = 0;
