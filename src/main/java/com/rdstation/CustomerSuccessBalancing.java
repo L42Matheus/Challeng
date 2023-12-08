@@ -38,7 +38,20 @@ public class CustomerSuccessBalancing {
                     csToCUstinerCount.getOrDefault(availablesCustomerSuccess.get(csIndex).getId(), 0) + 1);
         }
 
-        return csToCUstinerCount.size();
+        int maxCustomers = 0;
+        int maxCsId = 0;
+
+        for (Map.Entry<Integer, Integer> entry : csToCUstinerCount.entrySet()) {
+            if (entry.getValue() > maxCustomers) {
+                maxCustomers = entry.getValue();
+                maxCsId = entry.getKey();
+            } else if (entry.getValue() == maxCustomers) {
+                maxCsId = 0;
+            }
+        }
+
+        return maxCsId;
+
     }
 
     private List<CustomerSuccess> getAvailableCustomerSuccess() {
